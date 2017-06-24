@@ -3,12 +3,7 @@ package me.laszloszoboszlai.jdbc;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-
-
 public class VerifyJDBCConnection {
-
-	
-	
 	public static void main(String[] args) {
 		String host = "localhost";
 	    String port = "3306";
