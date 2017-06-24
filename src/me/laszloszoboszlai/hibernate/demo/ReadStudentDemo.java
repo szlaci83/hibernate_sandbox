@@ -6,7 +6,7 @@ import org.hibernate.cfg.Configuration;
 
 import me.laszloszoboszlai.hibernate.entity.Student;
 
-public class CreateStudentDemo {
+public class ReadStudentDemo {
 
 	public static void main(String[] args) {
 		// create session factory:
@@ -20,7 +20,7 @@ public class CreateStudentDemo {
 		try{
 			//create the object
 			System.out.println("Creating new Student object...");
-			Student newStudent = new Student("Ben", "Smith", "ben.smith@gmail.com");
+			Student newStudent = new Student("Axel", "Rose", "axel.rose@gmail.com");
 			
 			//start transaction
 			session.beginTransaction();
@@ -31,7 +31,25 @@ public class CreateStudentDemo {
 			
 			//commit transaction
 			session.getTransaction().commit();
+			
+			//find out the student's id 
+			System.out.println("Student saved with ID: "+ newStudent.getId());
+			
+			//get new session and start it
+			session = factory.getCurrentSession();
+			session.beginTransaction();
+			
+			//retrieve student according to ID
+			System.out.println("\nGetting student with id: " +  newStudent.getId());
+			Student theStudent = session.get(Student.class,  newStudent.getId());
+			System.out.println("The student is: " + theStudent);
+			
+			//commit the transaction
+			session.getTransaction().commit();
+			
 			System.out.println("Done!");
+			
+			
 		}
 		finally{
 			factory.close();
