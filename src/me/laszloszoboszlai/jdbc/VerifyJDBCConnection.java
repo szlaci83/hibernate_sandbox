@@ -10,8 +10,7 @@ public class VerifyJDBCConnection {
 		String dbName = "hb_student_tracker";
         String options = "?useSSL=false";
 		String userName = "hbstudent";
-	    String passWord = "hbstudent";
-	
+	    String passWord = "hbstudent";	
 		String JDBCUrl = "jdbc:mysql://" + host + ":" + port+ "/" + dbName + options;
 		
 		try {
@@ -20,10 +19,11 @@ public class VerifyJDBCConnection {
 			Connection dbConn = DriverManager.getConnection(JDBCUrl, userName, passWord);
 			
 			System.out.println("Connected!");
+			
+			dbConn.close();
 		}
-		catch (Exception ex){
+		catch (Exception e){
 			System.out.println("Connection error!");
 		}
 	}
-
 }
