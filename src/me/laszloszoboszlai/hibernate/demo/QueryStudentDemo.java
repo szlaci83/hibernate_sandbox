@@ -23,7 +23,7 @@ public class QueryStudentDemo {
 			//start transaction
 			session.beginTransaction();
 			
-			//query students
+			//query students using HQL
 			List<Student> theStudents = session.createQuery("from Student s where s.lastName='Dylan' or "
 										+" s.firstName='Axel' and s.email LIKE '%gmail.com'").list();
 			
